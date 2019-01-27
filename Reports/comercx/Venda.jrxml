@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Venda" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9802d9c1-5e3f-4739-98ef-285d1f2b4d54">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="88b09c11-0175-4fe1-b39f-12da40634783"/>
+	<parameter name="idvenda" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\Reports\\comercx\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select v.idvenda, v.situacvenda, c.nomecli,v.datavenda, v.totvenda
+from venda v
+join cliente c
+on v.idcliente = c.idcliente
+where v.idvenda = $P{idvenda}]]>
+	</queryString>
+	<field name="idvenda" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="situacvenda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datavenda" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totvenda" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="13" y="0" width="90" height="79" uuid="b63719a9-6ce6-45a7-9193-d78489954b53"/>
+				<imageExpression><![CDATA["C:\\Users\\joaop\\OneDrive\\Imagens\\Icones\\shop.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="448" y="38" width="107" height="20" uuid="991713b0-c7d0-4845-b1d7-27fe03c662ec"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="129" y="28" width="306" height="30" uuid="bc83f798-90e4-4984-a033-978c13ea2afb"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comercio X - Relatório de Venda]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="14" width="100" height="29" uuid="4f5ec7fb-3993-4f2f-b9db-85c4534a2ff5"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Venda]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="80" height="20" uuid="94a0571f-afa2-4a85-a298-bf39d4c6793f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="0" width="87" height="20" uuid="c8b7ea02-6214-4a52-8699-c6ed55ccf0a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Situação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="153" height="20" uuid="de36c454-679f-4bb2-a2c7-df996ccb0c0f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="0" width="100" height="20" uuid="5e518145-df01-4c66-a1c7-f5acb14d8c56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data da Venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="0" width="100" height="20" uuid="a9606eed-8489-4388-b1a5-7228932d9c42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="129" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="80" height="20" uuid="4d9cc4ae-70ed-47b6-a547-0e67c2834fc6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idvenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="0" width="87" height="20" uuid="380c4569-cd91-42ea-b107-59a9ec5567f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{situacvenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="0" width="153" height="20" uuid="be727d8e-212a-4097-9cb3-7a72667409b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nomecli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="100" height="20" uuid="7314ba5a-90a8-4c49-9f62-8c85ea9fdb29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{datavenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="100" height="20" uuid="c17195a6-0eea-45a2-8029-334300c24939"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totvenda}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="3" y="48" width="237" height="61" uuid="272074b3-f70b-45a5-9d79-b13b47ce047b"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idvenda">
+					<subreportParameterExpression><![CDATA[$P{idvenda}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ProdutosVenda.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="3" y="37" width="531" height="1" uuid="68d5601d-19ec-4c8a-96b8-67c7235773cc"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<break>
+				<reportElement x="0" y="14" width="100" height="1" uuid="adb0edfa-988d-40e9-ac35-39c61190419c"/>
+			</break>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="34" width="80" height="20" uuid="889a3810-0723-4e9d-aff4-1b5743f3f317"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="34" width="40" height="20" uuid="40826e80-3b86-46e4-89d5-e02907702add"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

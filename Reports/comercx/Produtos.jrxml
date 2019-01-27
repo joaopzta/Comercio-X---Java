@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Produtos" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="68dea18b-4618-4306-959b-b41b50267659">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="6"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from produto where qtd > 20]]>
+	</queryString>
+	<field name="idprod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeprod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ean13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precoprod" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qtd" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="4" width="73" height="20" isPrintInFirstWholeBand="true" uuid="476ec4c0-d5da-4478-a3d2-4d2d867df442"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="4" width="115" height="20" isPrintInFirstWholeBand="true" uuid="9a00bb7e-1c0b-4a65-9c0d-31e67ef16b51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="4" width="100" height="20" isPrintInFirstWholeBand="true" uuid="69d0ab52-d734-40f9-ad56-69453a2f944f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EAN 13]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="4" width="82" height="20" isPrintInFirstWholeBand="true" uuid="391480bc-4c63-420c-bca9-ea2d255a80ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="4" width="80" height="20" isPrintInFirstWholeBand="true" uuid="480eb01c-8ec7-4bd7-9bff-46fffcf25bad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Validade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="4" width="95" height="20" isPrintInFirstWholeBand="true" uuid="4c789b53-a714-49b7-b32e-d65c774585df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Unitário]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="83" y="10" width="115" height="20" isPrintInFirstWholeBand="true" uuid="e4627277-1756-4471-99e6-fb36bac45667"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nomeprod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="10" width="80" height="20" isPrintInFirstWholeBand="true" uuid="646a41d9-21f1-4006-8112-376cf7957252"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{validade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="10" width="95" height="20" isPrintInFirstWholeBand="true" uuid="6f6f269b-df58-4575-80b3-8f3105ade985"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{precoprod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="10" width="82" height="20" isPrintInFirstWholeBand="true" uuid="05ef0476-093c-42fe-ae9e-848fc43bd2e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="10" width="73" height="20" isPrintInFirstWholeBand="true" uuid="d99404e7-c4a4-431f-89b3-4150a41d4eda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idprod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="10" width="100" height="20" isPrintInFirstWholeBand="true" uuid="78e95f04-6004-4db7-b7de-e8702cfc2732"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ean13}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

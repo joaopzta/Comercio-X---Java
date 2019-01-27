@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProdutosEstoque" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d0058d33-cedc-4229-83d9-5a2caba80069">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset3" uuid="5c2345fc-ae7e-4955-a056-7b557aefd146">
+		<queryString>
+			<![CDATA[select * from produto where qtd >= 20]]>
+		</queryString>
+		<field name="idprod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nomeprod" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ean13" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="validade" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="precoprod" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="qtd" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Projetos\\Reports\\comercx\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from produto where qtd >= 20]]>
+	</queryString>
+	<field name="idprod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeprod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ean13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precoprod" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qtd" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="0" width="90" height="79" uuid="fce545dd-2d89-4361-b32d-36fd3d577545"/>
+				<imageExpression><![CDATA["C:\\Users\\joaop\\OneDrive\\Imagens\\Icones\\shop.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="448" y="38" width="107" height="20" uuid="5faed1ab-b8b5-4033-9e7c-1c7b9554bde9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="28" width="306" height="30" uuid="800739ef-46e3-4fe3-aee0-a47f298ba248"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comercio X - Estoque de Produtos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="202" height="29" uuid="3c5dbd6b-10d3-4940-ad38-b35517110ae2"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produtos em estoque]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="225" splitType="Stretch">
+			<elementGroup/>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="143" width="545" height="79" uuid="bfc7c0be-16d1-49db-8e14-3a4f884dd86c">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
+				</reportElement>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ProdutosEmBaixa.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="0" width="545" height="78" uuid="5c6b4875-9aac-426e-a585-710d048ea972">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue()==1]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Produtos.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="10" y="142" width="535" height="1" uuid="2bd75cfa-d288-4cc9-81ff-4843e50a5d6b"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="55" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="24" width="80" height="20" uuid="22c6ef51-7bf5-4532-b632-543e11f26750"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="24" width="40" height="20" uuid="35596856-26b6-4b13-b195-da78cb8d4d0c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
